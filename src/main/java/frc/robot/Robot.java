@@ -24,8 +24,8 @@ public class Robot extends TimedRobot {
    */
 
   private TalonSRX LeftMasterMotor1 = new TalonSRX(18);
-  private VictorSP LeftMasterMotor2 = new VictorSP(19);
-  private VictorSP RightMasterMotor1 = new VictorSP(2);
+  private TalonSRX LeftMasterMotor2 = new TalonSRX(3);
+  private TalonSRX RightMasterMotor1 = new TalonSRX(4);
   private TalonSRX RightMasterMotor2 = new TalonSRX(1);
 
 
@@ -54,11 +54,10 @@ public class Robot extends TimedRobot {
     double right = speed - turn;
 
     LeftMasterMotor1.set(ControlMode.PercentOutput, left);
-    LeftMasterMotor2.set(left);
-    RightMasterMotor1.set(-right);
+    LeftMasterMotor2.set(ControlMode.PercentOutput, left);
+    RightMasterMotor1.set(ControlMode.PercentOutput, -right);
     RightMasterMotor2.set(ControlMode.PercentOutput, -right);
   }
-
   @Override
   public void disabledInit() {}
 
